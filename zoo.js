@@ -713,10 +713,10 @@ function zoo_getHomeData(inviteId= "",timeout = 0) {
             secretp = data.data.result.homeMainInfo.secretp
             await zoo_collectProduceScore();
             //await zoo_pk_doPkSkill("2");
-            await zoo_pk_getHomeData('sSKNX-MpqKOJsNu_mZneBluwe_DRzs1f90l6Q_p8OVxtoB-JJEErrVU4eHW7e2I')
+            await zoo_pk_getHomeData('sSKNX-MpqKPS4rS-npPQDYOlFyDzCyhRYt1WZhgKTVZ_Y4ZL5B6SiXTlgYnQAQ')
             //await zoo_pk_assistGroup()
             if (data.data.result.homeMainInfo.raiseInfo.buttonStatus === 1 ) await zoo_raise(1000)
-            await zoo_getHomeData('ZXTKT0225KkcRx4b8lbWJU72wvZZcwFjRWn6-7zx55awQ');
+            await zoo_getHomeData('ZXTKT019-akzFn9joRWiRHq94JYFjRWn6-7zx55awQ');
             await zoo_getTaskDetail("","app")
             await zoo_getTaskDetail()
           } else {
@@ -885,7 +885,7 @@ function zoo_pk_getHomeData(body = "",timeout = 0) {
       $.post(url, async (err, resp, data) => {
         try {
           if (body !== "") {
-            await $.getScript("https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/memo/jd_nianBeastShareCode.txt").then((text) => (shareCodeList = text.split('\n')))
+            await $.getScript("https://raw.githubusercontent.com/1220515996/zoo/main/sharecode.txt").then((text) => (shareCodeList = text.split('\n')))
             for (let i in shareCodeList) {
               if (shareCodeList[i]) await zoo_pk_assistGroup(shareCodeList[i]);
             }
