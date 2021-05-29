@@ -1,6 +1,6 @@
 /*
 动物联萌 618活动
-更新时间：2021-05-27 09:15
+更新时间：2021-05-29 09:57
 做任务，收金币
 脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
 // quantumultx
@@ -17,7 +17,7 @@ const $ = new Env('动物联萌');
 //Node.js用户请在jdCookie.js处填写京东ck;
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '',secretp = '',shareCodeList = [],showCode = true;
-let doPkSkill = true;  //自动放技能，不需要的改为false
+let doPkSkill = false;  //自动放技能，不需要的改为false
 const JD_API_HOST = `https://api.m.jd.com/client.action?functionId=`;
 !(async () => {
   await requireConfig()
@@ -39,6 +39,8 @@ const JD_API_HOST = `https://api.m.jd.com/client.action?functionId=`;
       }
       console.log('\n\n京东账号：'+merge.nickname + ' 任务开始')
       await zoo_sign()
+      //console.log('加密算法解密中。暂无法使用')
+      //return ;
       await zoo_pk_getHomeData();
       await zoo_getHomeData();
       //await qryCompositeMaterials()
@@ -127,7 +129,8 @@ function zoo_getTaskDetail(shopSign = "",appSign = "",timeout = 0){
                     let nonstr = randomWord(false,10)
                     let time = Date.now()
                     let key = minusByByte(nonstr.slice(0,5),String(time).slice(-5))
-                    let msg = `random=${rnd}&token=d89985df35e6a2227fd2e85fe78116d2&time=${time}&nonce_str=${nonstr}&key=${key}&is_trust=true`
+                    //let msg = `random=${rnd}&token=d89985df35e6a2227fd2e85fe78116d2&time=${time}&nonce_str=${nonstr}&key=${key}&is_trust=true`
+                    let msg = `random=${rnd}&token=MDFnc2lFaTAxMQ==.VkVbd1hRQ1BwUFFLWTtcMRFZHAASQi0vF1ZfX2ldS0IXdxdWDQALGCs6XHBZEhA5Bx4kOBgXGCoLBC4oWk4X.2d95d9ed&time=${time}&nonce_str=${nonstr}&key=${key}&is_trust=1`
                     let sign = bytesToHex(wordsToBytes(getSign(msg))).toUpperCase() //,\"random\":\"${rnd}\"
                     let taskBody = `functionId=zoo_collectScore&body={"taskId":${data.data.result.taskVos[i].taskId},"taskToken" : "${list[j].taskToken}","ss":"{\\"extraData\\":{\\"is_trust\\":true,\\"sign\\":\\"${sign}\\",\\"fpb\\":\\"\\",\\"time\\":${time},\\"encrypt\\":\\"3\\",\\"nonstr\\":\\"${nonstr}\\",\\"jj\\":\\"\\",\\"token\\":\\"d89985df35e6a2227fd2e85fe78116d2\\",\\"cf_v\\":\\"1.0.2\\",\\"client_version\\":\\"2.2.1\\",\\"buttonid\\":\\"jmdd-react-smash_62\\",\\"sceneid\\":\\"homePageh5\\"},\\"secretp\\":\\"${secretp}\\",\\"random\\":\\"${rnd}\\"}","itemId":"${list[j].itemId}","actionType":1,"shopSign":${shopSign}}&client=wh5&clientVersion=1.0.0`
                     //console.log(taskBody)
@@ -713,10 +716,10 @@ function zoo_getHomeData(inviteId= "",timeout = 0) {
             secretp = data.data.result.homeMainInfo.secretp
             await zoo_collectProduceScore();
             //await zoo_pk_doPkSkill("2");
-            await zoo_pk_getHomeData('sSKNX-MpqKPS4rS-npPQDYOlFyDzCyhRYt1WZhgKTVZ_Y4ZL5B6SiXTlgYnQAQ')
+            await zoo_pk_getHomeData('sSKNX-MpqKPS4rS-npPQDYOlFyDzCyhRYt1WZhgKTVZ_Y4ZL5B6SiXTlgYnQDw')
             //await zoo_pk_assistGroup()
             if (data.data.result.homeMainInfo.raiseInfo.buttonStatus === 1 ) await zoo_raise(1000)
-            await zoo_getHomeData('ZXTKT019-akzFn9joRWiRHq94JYFjRWn6-7zx55awQ');
+            await zoo_getHomeData('ZXTKT0225KkcRx4b8lbWJU72wvZZcwFjRWn6-7zx55awQ');
             await zoo_getTaskDetail("","app")
             await zoo_getTaskDetail()
           } else {
@@ -885,7 +888,7 @@ function zoo_pk_getHomeData(body = "",timeout = 0) {
       $.post(url, async (err, resp, data) => {
         try {
           if (body !== "") {
-            await $.getScript("https://raw.githubusercontent.com/1220515996/zoo/main/sharecode.txt").then((text) => (shareCodeList = text.split('\n')))
+            await $.getScript("https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/memo/jd_nianBeastShareCode.txt").then((text) => (shareCodeList = text.split('\n')))
             for (let i in shareCodeList) {
               if (shareCodeList[i]) await zoo_pk_assistGroup(shareCodeList[i]);
             }
@@ -977,6 +980,7 @@ function jsonParse(str) {
     }
   }
 }
+
 
 function minusByByte(t, n) {
   var e = t.length
