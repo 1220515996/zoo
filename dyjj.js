@@ -80,8 +80,8 @@ const JD_API_HOST = `https://api.m.jd.com`;
                     console.log("为大号助力ing...")                
                     await help($.rid, $.inviter,$.helptype)
                     console.log("为作者助力ing...")
-                    await help($.authorCode.rid, $.authorCode.inviter,1)
-                    await help($.authorCode.rid, $.authorCode.inviter,2)
+          //          await help($.authorCode.rid, $.authorCode.inviter,1)
+          //          await help($.authorCode.rid, $.authorCode.inviter,2)
         //        }
                 } else {
                     console.log("没获取到助力码,停止运行")
