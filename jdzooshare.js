@@ -84,6 +84,222 @@ function QueryJDUserInfo(i,timeout = 0) {
 }
 
 
+      //if (shopSign) {
+      //  console.log(shopSign)
+      //  url.url = url.url.replace('zoo_getTaskDetail','zoo_shopLotteryInfo')
+      //  url.body = url.body.replace('zoo_getTaskDetail','zoo_shopLotteryInfo')
+      //}
+      $.post(url, async (err, resp, data) => {
+        try {
+          //console.log('zoo_getTaskDetail:' + data)
+          data = JSON.parse(data);
+          if (shopSign === "") {
+            shopSign = '""'
+            if (appSign === "" && typeof data.data.result.inviteId !== "undefined") console.log(`您的个人助力码：${data.data.result.inviteId}`)
+          }
+          if (!data.data.result) return
+          for (let i = 0;i < data.data.result.taskVos.length;i ++) {
+            //if (merge.black)  return ;
+            console.log( "\n" + data.data.result.taskVos[i].taskType + '-' + data.data.result.taskVos[i].taskName + (appSign&&"（小程序）") + '-'  +  (data.data.result.taskVos[i].status === 1 ? `已完成${data.data.result.taskVos[i].times}-未完成${data.data.result.taskVos[i].maxTimes}` : "全部已完成")  )
+            if ([1,2,3,5,7,9,26].includes(data.data.result.taskVos[i].taskType) && data.data.result.taskVos[i].status === 1 ) {
+              let list = data.data.result.taskVos[i].productInfoVos||data.data.result.taskVos[i].brandMemberVos||data.data.result.taskVos[i].followShopVo||data.data.result.taskVos[i].shoppingActivityVos||data.data.result.taskVos[i].browseShopVo
+              //console.log(list)
+              //if (data.data.result.taskVos[i].taskType === 9) continue
+              for (let k = data.data.result.taskVos[i].times; k < data.data.result.taskVos[i].maxTimes; k++) {
+                for (let j in list) {
+                  if (list[j].status === 1) {
+                    //let taskBody = `functionId=zoo_collectScore&body={"taskId":"${data.data.result.taskVos[i].taskId}","actionType":1,"taskToken":"${list[j].taskToken}","ss":"{\\"extraData\\":{\\"log\\":\\"${sign}\\",\\"sceneid\\":\\"DR216hPageh5\\"},\\"secretp\\":\\"${secretp}\\",\\"random\\":\\"${rnd}\\"}"}&client=wh5&clientVersion=1.0.0`
+                    let taskBody = `functionId=zoo_collectScore&body=${JSON.stringify({"taskId": data.data.result.taskVos[i].taskId,"actionType":1,"taskToken" : list[j].taskToken,"ss" : getBody()})}&client=wh5&clientVersion=1.0.0`
+                    console.log("\n"+(list[j].title||list[j].shopName||list[j].skuName))
+                    await zoo_collectScore(taskBody,2000)
+                    //}
+                    list[j].status = 2;
+                    break;
+                  } else {
+                    continue;
+                  }
+                }
+              }
+            }
+
+            if ([12,13].includes(data.data.result.taskVos[i].taskType) && data.data.result.taskVos[i].status === 1) {
+              for (let k = data.data.result.taskVos[i].times; k < data.data.result.taskVos[i].maxTimes; k++) {
+                let taskBody = `functionId=zoo_collectScore&body=${JSON.stringify({"taskId": data.data.result.taskVos[i].taskId,"taskToken" : list[j].taskToken,"ss" : getBody()})}&client=wh5&clientVersion=1.0.0`
+                if (merge.black)  return ;
+                  //if (typeof data.data.result.taskVos[i].simpleRecordInfoVo !== "undefined"){
+                  //  taskBody = encodeURIComponent(`{"dataSource":"newshortAward","method":"getTaskAward","reqParams":"{\\"taskToken\\":\\"${data.data.result.taskVos[i].simpleRecordInfoVo.taskToken}\\"}","sdkVersion":"1.0.0","clientLanguage":"zh"}`)
+                  //  await qryViewkitCallbackResult(taskBody,1000)
+                  //} else {
+                await zoo_collectScore(taskBody,1000)
+                  //}
+                }
+            }
+
+            if ([2].includes(data.data.result.taskVos[i].taskType) && data.data.result.taskVos[i].status === 1 && !data.data.result.taskVos[i].taskName.includes("逛逛")) {
+              for (let k = data.data.result.taskVos[i].times; k < data.data.result.taskVos[i].maxTimes; k++) {
+                await zoo_getFeedDetail(data.data.result.taskVos[i].taskId)
+              }
+            }
+          }
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve()
+        }
+      })
+    },timeout)
+  })
+}
+
+//获取我的城市
+function zoo_myMap(timeout = 0){
+  return new Promise((resolve) => {
+    setTimeout( ()=>{
+      let url = {
+        url : `${JD_API_HOST}zoo_myMap`,
+        headers : {
+          'Origin' : `https://wbbny.m.jd.com`,
+          'Cookie' : cookie,
+          'Connection' : `keep-alive`,
+          'Accept' : `application/json, text/plain, */*`,
+          'Host' : `api.m.jd.com`,
+          'User-Agent' : `jdapp;iPhone;9.2.0;14.1;`,
+          'Accept-Encoding' : `gzip, deflate, br`,
+          'Accept-Language' : `zh-cn`
+        },
+        body : `functionId=zoo_myMap&body={"ss":"{\\"extraData\\":{},\\"businessData\\":{},\\"secretp\\":\\"${secretp}\\"}"}&client=wh5&clientVersion=1.0.0`
+      }
+      $.post(url, async (err, resp, data) => {
+        try {
+          console.log('zoo_myMap:' + data)
+          data = JSON.parse(data);
+          for (let i in data.data.result.shopList) {
+            // (data.data.result.shopList[i].status === 1) {
+              //console.log(data.data.result.shopList[i])
+            console.log('\n开始小镇任务：'+ data.data.result.shopList[i].name)// + '-' + data.data.result.shopList[i].shopId
+            await zoo_getTaskDetail(data.data.result.shopList[i].shopId)
+            //}
+          }
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve()
+        }
+      })
+    },timeout)
+  })
+}
+//发技能
+function zoo_pk_doPkSkill(skillType, timeout = 0){
+  return new Promise((resolve) => {
+    setTimeout( ()=>{
+      let url = {
+        url : `${JD_API_HOST}zoo_pk_doPkSkill`,
+        headers : {
+          'Origin' : `https://wbbny.m.jd.com`,
+          'Cookie' : cookie,
+          'Connection' : `keep-alive`,
+          'Accept' : `application/json, text/plain, */*`,
+          'Host' : `api.m.jd.com`,
+          'User-Agent' : `jdapp;iPhone;9.2.0;14.1;`,
+          'Accept-Encoding' : `gzip, deflate, br`,
+          'Accept-Language' : `zh-cn`
+        },
+        body : `functionId=zoo_pk_doPkSkill&body={"skillType" : "${skillType}"}&client=wh5&clientVersion=1.0.0`
+      }
+      $.post(url, async (err, resp, data) => {
+        try {
+          //console.log('zoo_pk_doPkSkill:' + data)
+          data = JSON.parse(data);
+          if (data.data.bizCode === 0) {
+            console.log('技能获得：' + data.data.result.skillValue);
+          } else {
+            console.log('技能释放失败：' + data.data.bizMsg);
+          }
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve()
+        }
+      })
+    },timeout)
+  })
+}
+//签到
+function zoo_sign(timeout = 0){
+  return new Promise((resolve) => {
+    setTimeout( ()=>{
+      let url = {
+        url : `${JD_API_HOST}zoo_sign`,
+        headers : {
+          'Origin' : `https://wbbny.m.jd.com`,
+          'Cookie' : cookie,
+          'Connection' : `keep-alive`,
+          'Accept' : `application/json, text/plain, */*`,
+          'Host' : `api.m.jd.com`,
+          'User-Agent' : `jdapp;iPhone;9.2.0;14.1;`,
+          'Accept-Encoding' : `gzip, deflate, br`,
+          'Accept-Language' : `zh-cn`
+        },
+        body : `functionId=zoo_sign&body={}&client=wh5&clientVersion=1.0.0`
+      }
+      $.post(url, async (err, resp, data) => {
+        try {
+          //console.log(data)
+          data = JSON.parse(data);
+          console.log('签到结果：' + data.data.bizMsg);
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve()
+        }
+      })
+    },timeout)
+  })
+}
+
+
+
+//收金币
+function zoo_collectProduceScore(timeout = 0){
+  return new Promise((resolve) => {
+    setTimeout( ()=>{
+      let url = {
+        url : `${JD_API_HOST}zoo_collectProduceScore`,
+        headers : {
+          'Origin' : `https://wbbny.m.jd.com`,
+          'Cookie' : cookie,
+          'Connection' : `keep-alive`,
+          'Accept' : `application/json, text/plain, */*`,
+          'Host' : `api.m.jd.com`,
+          'User-Agent' : `jdapp;iPhone;9.2.0;14.1;`,
+          'Accept-Encoding' : `gzip, deflate, br`,
+          'Accept-Language' : `zh-cn`,
+          'Content-Type' : `application/x-www-form-urlencoded`
+        },
+        body : `functionId=zoo_collectProduceScore&body=${JSON.stringify({"ss" : getBody()})}&client=wh5&clientVersion=1.0.0`
+      }
+      //console.log(url.body)
+      $.post(url, async (err, resp, data) => {
+        try {
+          //console.log(data)
+          data = JSON.parse(data);
+          if (data.data.bizCode === -1002) {
+            console.log('此账号暂不可使用脚本，脚本终止！')
+            merge.black = true;
+            return ;
+          }
+          if (data.data.result) console.log(`\n收取金币：${data.data.result.produceScore}`)
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve()
+        }
+      })
+    },timeout)
+  })
+}
+
 
 
 //群组助力
