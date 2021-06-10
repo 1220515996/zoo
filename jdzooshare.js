@@ -50,6 +50,42 @@ const JD_API_HOST = `https://api.m.jd.com/client.action?functionId=`;
 })()
   .catch((e) => $.logErr(e))
   .finally(() => $.done())
+
+//获取昵称（直接用，勿删）
+function QueryJDUserInfo(i,timeout = 0) {
+  return new Promise((resolve) => {
+    setTimeout( ()=>{
+      let url = {
+        url : `https://wq.jd.com/user/info/QueryJDUserInfo?sceneval=2`,
+        headers : {
+          'Referer' : `https://wqs.jd.com/my/iserinfo.html`,
+          'Cookie' : cookie
+        }
+      }
+      $.get(url, (err, resp, data) => {
+        try {
+          data = JSON.parse(data);
+          if (data.retcode === 13) {
+            merge.enabled = false
+            return
+          } else if (data.retcode === 0) {
+            merge.nickname = data.base.nickname;
+          } else {
+            merge.nickname = `账号${i + 1}`
+          }
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve()
+        }
+      })
+    },timeout)
+  })
+}
+
+
+
+
 //群组助力
 function zoo_pk_assistGroup(inviteId = "",timeout = 0) {
   return new Promise((resolve) => {
