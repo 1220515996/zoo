@@ -24,7 +24,7 @@ const $ = new Env('618主会场红包雨');
 const notify = $.isNode() ? require('./sendNotify') : '';
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 //IOS等用户直接用NobyDa的jd cookie
-let cookiesArr = [], cookie = '';
+let cookiesArr = [], cookie = '',shareCodeList = [];
 let allMessage = '';
 $.appFlag = false;
 $.wxFlag = false;
@@ -69,6 +69,11 @@ const JD_API_HOST = 'https://api.m.jd.com';
                     await notify.sendNotify(`${$.name}cookie已失效 - ${$.UserName}`, `京东账号${$.index} ${$.UserName}\n请重新登录获取cookie`);
                 }
                 continue
+            }
+            if (inviteId !== "") {
+              await $.getScript("https://raw.githubusercontent.com/1220515996/zoo/main/sharecode.txt").then((text) => (shareCodeList = text ? text.split('\n') : []))
+                for (let i in shareCodeList) {
+                  if (shareCodeList[i]) await zoo_pk_assistGroup(shareCodeList[i]);
             }
 
             // WX
@@ -157,7 +162,40 @@ async function lottery(source) {
         })
     })
 }
-
+//群组助力
+function zoo_pk_assistGroup(inviteId = "",timeout = 0) {
+  return new Promise((resolve) => {
+    setTimeout( ()=>{
+      let url = {
+        url : `${JD_API_HOST}zoo_pk_assistGroup`  ,
+        headers : {
+          'Origin' : `https://wbbny.m.jd.com`,
+          'Cookie' : cookie,
+          'Connection' : `keep-alive`,
+          'Accept' : `application/json, text/plain, */*`,
+          'Host' : `api.m.jd.com`,
+          'User-Agent' : `jdapp;iPhone;9.2.6;14.1;`,
+          'Accept-Encoding' : `gzip, deflate, br`,
+          'Accept-Language' : `zh-cn`,
+          'Refer' : `https://bunearth.m.jd.com/babelDiy/Zeus/4SJUHwGdUQYgg94PFzjZZbGZRjDd/index.html?jmddToSmartEntry=login`
+        },
+        body : `functionId=zoo_pk_assistGroup&body=${JSON.stringify({"confirmFlag": 1,"inviteId" : inviteId,"ss" : getBody()})}&client=wh5&clientVersion=1.0.0`
+      }
+      //console.log(url.body)
+      $.post(url, async (err, resp, data) => {
+        try {
+          console.log('商圈助力：' + data+inviteId)
+          data = JSON.parse(data);
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve()
+        }
+      })
+    },timeout)
+  })
+}
+ 
 function taskPostUrl(functionId, body = {}) {
     return {
         url: JD_API_HOST,
