@@ -681,7 +681,7 @@ function zoo_raise(timeout = 0) {
         try {
           //console.log(data)
           data = JSON.parse(data);
-          console.log('解锁结果：'+ (data.data.bizCode||'成功'))
+          //console.log('解锁结果：'+ (data.data.bizCode||'成功'))
         } catch (e) {
           $.logErr(e, resp);
         } finally {
@@ -755,7 +755,7 @@ function zoo_pk_getHomeData(inviteId = "",timeout = 0) {
             }
             //await zoo_pk_assistGroup(inviteId);
           } else {
-            console.log(data);
+            //console.log(data);
             data = JSON.parse(data);
             if (showCode) {
               console.log('您的队伍助力码：' + data.data.result.groupInfo.groupAssistInviteId);
