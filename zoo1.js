@@ -294,7 +294,7 @@ function zoo_shopSignInWrite(shopSign,timeout = 0){
           'Cookie' : cookie,
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
-          'Host' : `api.m.jd.com`,
+          'Host' : `api.m.jd12.com`,
           'User-Agent' : `jdapp;iPhone;9.2.0;14.1;`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
@@ -332,7 +332,7 @@ function zoo_shopSignInRead(shopSign,timeout = 0){
           'Cookie' : cookie,
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
-          'Host' : `api.m.jd.com`,
+          'Host' : `api.m.jd12.com`,
           'User-Agent' : `jdapp;iPhone;9.2.0;14.1;`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
@@ -366,7 +366,7 @@ function zoo_collectProduceScore(timeout = 0){
       let url = {
         url : `${JD_API_HOST}zoo_collectProduceScore`,
         headers : {
-          'Origin' : `https://wbbny.m.jd.com`,
+          'Origin' : `https://wbbny.m.jd12.com`,
           'Cookie' : cookie,
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
@@ -406,7 +406,7 @@ function zoo_collectScore(taskBody,timeout = 0){
       let url = {
         url : `${JD_API_HOST}zoo_collectScore`,
         headers : {
-          'Origin' : `https://wbbny.m.jd.com`,
+          'Origin' : `https://wbbny.m.jd12.com`,
           'Cookie' : cookie,
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
@@ -455,7 +455,7 @@ function zoo_doAdditionalTask(taskBody,timeout = 0){
       let url = {
         url : `${JD_API_HOST}zoo_doAdditionalTask`,
         headers : {
-          'Origin' : `https://wbbny.m.jd.com`,
+          'Origin' : `https://wbbny.m.jd12.com`,
           'Cookie' : cookie,
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
@@ -495,7 +495,7 @@ function zoo_getFeedDetail(taskId,timeout = 0){
       let url = {
         url : `${JD_API_HOST}zoo_getFeedDetail`,
         headers : {
-          'Origin' : `https://wbbny.m.jd.com`,
+          'Origin' : `https://wbbny.m.jd12.com`,
           'Cookie' : cookie,
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
@@ -542,9 +542,9 @@ function qryViewkitCallbackResult(taskBody,timeout = 0) {
   return new Promise((resolve) => {
     setTimeout( ()=>{
       let url = {
-        url : `https://api.m.jd.com/?functionId=qryViewkitCallbackResult&client=wh5&clientVersion=1.0.0&body=${taskBody}&_timestamp=`+Date.now(),
+        url : `https://api.m.jd12.com/?functionId=qryViewkitCallbackResult&client=wh5&clientVersion=1.0.0&body=${taskBody}&_timestamp=`+Date.now(),
         headers : {
-          'Origin' : `https://bunearth.m.jd.com`,
+          'Origin' : `https://bunearth.m.jd12.com`,
           'Cookie' : cookie,
           'Connection' : `keep-alive`,
           'Accept' : `*/*`,
@@ -553,7 +553,7 @@ function qryViewkitCallbackResult(taskBody,timeout = 0) {
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`,
           'Content-Type' : 'application/x-www-form-urlencoded',
-          'Referer' : 'https://bunearth.m.jd.com/babelDiy/Zeus/4SJUHwGdUQYgg94PFzjZZbGZRjDd/index.html?jmddToSmartEntry=login'
+          'Referer' : 'https://bunearth.m.jd12.com/babelDiy/Zeus/4SJUHwGdUQYgg94PFzjZZbGZRjDd/index.html?jmddToSmartEntry=login'
         }
        }
 
