@@ -162,40 +162,7 @@ async function lottery(source) {
         })
     })
 }
-//群组助力
-function zoo_pk_assistGroup(inviteId = "",timeout = 0) {
-  return new Promise((resolve) => {
-    setTimeout( ()=>{
-      let url = {
-        url : `${JD_API_HOST}zoo_pk_assistGroup`  ,
-        headers : {
-          'Origin' : `https://wbbny.m.jd.com`,
-          'Cookie' : cookie,
-          'Connection' : `keep-alive`,
-          'Accept' : `application/json, text/plain, */*`,
-          'Host' : `api.m.jd.com`,
-          'User-Agent' : `jdapp;iPhone;9.2.6;14.1;`,
-          'Accept-Encoding' : `gzip, deflate, br`,
-          'Accept-Language' : `zh-cn`,
-          'Refer' : `https://bunearth.m.jd.com/babelDiy/Zeus/4SJUHwGdUQYgg94PFzjZZbGZRjDd/index.html?jmddToSmartEntry=login`
-        },
-        body : `functionId=zoo_pk_assistGroup&body=${JSON.stringify({"confirmFlag": 1,"inviteId" : inviteId,"ss" : getBody()})}&client=wh5&clientVersion=1.0.0`
-      }
-      //console.log(url.body)
-      $.post(url, async (err, resp, data) => {
-        try {
-          console.log('商圈助力：' + data+inviteId)
-          data = JSON.parse(data);
-        } catch (e) {
-          $.logErr(e, resp);
-        } finally {
-          resolve()
-        }
-      })
-    },timeout)
-  })
-}
- 
+
 function taskPostUrl(functionId, body = {}) {
     return {
         url: JD_API_HOST,
