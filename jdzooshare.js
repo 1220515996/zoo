@@ -41,7 +41,7 @@ const JD_API_HOST = `https://api.m.jd.com/client.action?functionId=`;
       await zoo_sign()
       await zoo_pk_getHomeData();
       await zoo_getHomeData();
-      if (merge.black) break;
+      if (merge.black) continue;
       //await qryCompositeMaterials()
       await msgShow();
       //break;
@@ -90,7 +90,7 @@ function zoo_getTaskDetail(shopSign = "",appSign = "",timeout = 0){
       let url = {
         url : `${JD_API_HOST}zoo_getTaskDetail`,
         headers : {
-          'Origin' : `https://wbbny.m.jd.com`,
+          'Origin' : `https://wbbny.m.jd65.com`,
           'Cookie' : cookie,
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
