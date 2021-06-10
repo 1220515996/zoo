@@ -90,7 +90,7 @@ function zoo_getTaskDetail(shopSign = "",appSign = "",timeout = 0){
       let url = {
         url : `${JD_API_HOST}zoo_getTaskDetail`,
         headers : {
-          'Origin' : `https://wbbny.m.jd.com`,
+          'Origin' : `https://wbbny.m.jd12.com`,
           'Cookie' : cookie,
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
