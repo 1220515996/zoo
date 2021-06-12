@@ -27,7 +27,6 @@ const $ = new Env('动物联萌');
 let cookiesArr = [], cookie = '',secretp = '',shareCodeList = [],showCode = true;
 let doPkSkill = true;  //自动放技能，不需要的改为false
 const JD_API_HOST = `https://api.m.jd.com/client.action?functionId=`;
-'User-Agent': $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1"),
 !(async () => {
   await requireConfig()
   if (!cookiesArr[0]) {
