@@ -161,7 +161,7 @@ function zoo_getTaskDetail(shopSign = "",appSign = "",timeout = 0){
                 }
             }
 
-            if ([2].includes(data.data.result.taskVos[i].taskType) && data.data.result.taskVos[i].status === 1 && !data.data.result.taskVos[i].taskName.includes("逛逛")) {
+            if ((new Date().getHours()>= 9 && new Date().getHours()<= 10) && [2].includes(data.data.result.taskVos[i].taskType) && data.data.result.taskVos[i].status === 1 && !data.data.result.taskVos[i].taskName.includes("逛逛")) {
               for (let k = data.data.result.taskVos[i].times; k < data.data.result.taskVos[i].maxTimes; k++) {
                 await zoo_getFeedDetail(data.data.result.taskVos[i].taskId)
               }
@@ -352,7 +352,7 @@ function zoo_shopSignInRead(shopSign,timeout = 0){
         try {
           console.log(data)
           data = JSON.parse(data);
-          if (data.data.result.signInTag === 0) {
+          if (data.data.result.signInTag === 0 && (new Date().getHours()>= 9 && new Date().getHours()<= 10)) {
              secretp = secretp||data.data.result.secretp
              await zoo_shopSignInWrite(shopSign)
           } else {
