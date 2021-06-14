@@ -104,7 +104,7 @@ function zoo_getTaskDetail(shopSign = "",appSign = "",timeout = 0){
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Dalvik/2.1.0 (Linux; U; Android 11; SM-G9860 Build/RP1A.200720.012)`,
+          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
         },
@@ -227,7 +227,7 @@ function zoo_pk_doPkSkill(skillType, timeout = 0){
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Dalvik/2.1.0 (Linux; U; Android 11; SM-G9860 Build/RP1A.200720.012)`,
+          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
         },
@@ -263,7 +263,7 @@ function zoo_sign(timeout = 0){
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Dalvik/2.1.0 (Linux; U; Android 11; SM-G9860 Build/RP1A.200720.012)`,
+          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
         },
@@ -380,7 +380,7 @@ function zoo_collectProduceScore(timeout = 0){
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Dalvik/2.1.0 (Linux; U; Android 11; SM-G9860 Build/RP1A.200720.012)`,
+          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`,
           'Content-Type' : `application/x-www-form-urlencoded`
@@ -420,7 +420,7 @@ function zoo_collectScore(taskBody,timeout = 0){
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Dalvik/2.1.0 (Linux; U; Android 11; SM-G9860 Build/RP1A.200720.012)`,
+          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
         },
@@ -469,7 +469,7 @@ function zoo_doAdditionalTask(taskBody,timeout = 0){
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Dalvik/2.1.0 (Linux; U; Android 11; SM-G9860 Build/RP1A.200720.012)`,
+          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
         },
@@ -509,7 +509,7 @@ function zoo_getFeedDetail(taskId,timeout = 0){
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Dalvik/2.1.0 (Linux; U; Android 11; SM-G9860 Build/RP1A.200720.012)`,
+          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
         },
@@ -558,7 +558,7 @@ function qryViewkitCallbackResult(taskBody,timeout = 0) {
           'Connection' : `keep-alive`,
           'Accept' : `*/*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Dalvik/2.1.0 (Linux; U; Android 11; SM-G9860 Build/RP1A.200720.012)`,
+          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`,
           'Content-Type' : 'application/x-www-form-urlencoded',
@@ -594,7 +594,7 @@ function zoo_pk_assistGroup(inviteId = "",timeout = 0) {
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Dalvik/2.1.0 (Linux; U; Android 11; SM-G9860 Build/RP1A.200720.012)`,
+          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`,
           'Refer' : `https://bunearth.m.jd.com/babelDiy/Zeus/4SJUHwGdUQYgg94PFzjZZbGZRjDd/index.html?jmddToSmartEntry=login`
@@ -628,7 +628,7 @@ function zoo_getHomeData(inviteId= "",timeout = 0) {
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Dalvik/2.1.0 (Linux; U; Android 11; SM-G9860 Build/RP1A.200720.012)`,
+          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
         },
@@ -680,7 +680,7 @@ function zoo_raise(timeout = 0) {
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Dalvik/2.1.0 (Linux; U; Android 11; SM-G9860 Build/RP1A.200720.012)`,
+          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
         },
@@ -749,7 +749,7 @@ function zoo_pk_getHomeData(inviteId = "",timeout = 0) {
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Dalvik/2.1.0 (Linux; U; Android 11; SM-G9860 Build/RP1A.200720.012)`,
+          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
         },
