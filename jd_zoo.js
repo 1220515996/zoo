@@ -209,9 +209,9 @@ if ($.isNode()) {
         }
     }
     let res = [], res2 = [], res3 = [];
-    //res = await getAuthorShareCode('https://raw.githubusercontent.com/star261/jd/main/code/zoo.json');
-    res2 = await getAuthorShareCode('https://cdn.jsdelivr.net/gh/gitupdate/updateTeam@master/shareCodes/jd_zoo.json');
-    res3 = await getAuthorShareCode('http://cdn.trueorfalse.top/e528ffae31d5407aac83b8c37a4c86bc/');
+    //res = await getAuthorShareCode('https://raw.githubusercontent.com/1220515996/zoo/main/sharecode.txt');
+    res2 = await getAuthorShareCode('https://raw.githubusercontent.com/1220515996/zoo/main/sharecode.txt');
+    res3 = await getAuthorShareCode('https://raw.githubusercontent.com/1220515996/zoo/main/sharecode.txt');
     if (pKHelpAuthorFlag) {
         if([...$.innerPkInviteList, ...res, ...res2, ...res3].length > 6){
             $.innerPkInviteList = getRandomArrayElements([...$.innerPkInviteList, ...res, ...res2, ...res3],6);
@@ -241,6 +241,7 @@ if ($.isNode()) {
             }
             $.canHelp = true;
         }
+        if (pKHelpFlag!=true){
         if ($.inviteList && $.inviteList.length) console.log(`\n******开始内部京东账号【邀请好友助力】*********\n`);
         for (let j = 0; j < $.inviteList.length && $.canHelp; j++) {
             $.oneInviteInfo = $.inviteList[j];
@@ -253,6 +254,7 @@ if ($.isNode()) {
             //await takePostRequest('helpHomeData');
             await takePostRequest('help');
             await $.wait(2000);
+        }
         }
     }
 })()
@@ -1003,7 +1005,7 @@ function getRandomArrayElements(arr, count) {
     }
     return shuffled.slice(min);
 }
-function getAuthorShareCode(url = "http://cdn.annnibb.me/eb6fdc36b281b7d5eabf33396c2683a2.json") {
+function getAuthorShareCode(url = "https://raw.githubusercontent.com/1220515996/zoo/main/sharecode.txt") {
     return new Promise(async resolve => {
         const options = {
             "url": `${url}?${new Date()}`,
