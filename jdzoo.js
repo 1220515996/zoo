@@ -208,13 +208,13 @@ if ($.isNode()) {
             if($.hotFlag)$.secretpInfo[$.UserName] = false;//火爆账号不执行助力
         }
     }
-    let res = [], res2 = [], res3 = [];
+    let res2 = [];
     res2 = await getAuthorShareCode('https://raw.githubusercontent.com/1220515996/zoo/main/sharecode.txt');
     if (pKHelpAuthorFlag) {
-        if([...$.innerPkInviteList, ...res, ...res2, ...res3].length > 6){
-            $.innerPkInviteList = getRandomArrayElements([...res, ...res2, ...res3],6);
+        if([...res2].length > 4){
+            $.innerPkInviteList = getRandomArrayElements([...res2],4);
         }else{
-            $.innerPkInviteList = getRandomArrayElements([...res, ...res2, ...res3], [...res, ...res2, ...res3].length);
+            $.innerPkInviteList = getRandomArrayElements([...res2], [...res2].length);
         }
         $.pkInviteList.push(...$.innerPkInviteList);
     }
@@ -239,7 +239,6 @@ if ($.isNode()) {
             }
             $.canHelp = true;
         }
-        if (pKHelpFlag!=true){
         if ($.inviteList && $.inviteList.length) console.log(`\n******开始内部京东账号【邀请好友助力】*********\n`);
         for (let j = 0; j < $.inviteList.length && $.canHelp; j++) {
             $.oneInviteInfo = $.inviteList[j];
@@ -252,7 +251,6 @@ if ($.isNode()) {
             //await takePostRequest('helpHomeData');
             await takePostRequest('help');
             await $.wait(2000);
-        }
         }
     }
 })()
