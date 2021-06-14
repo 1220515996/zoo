@@ -209,14 +209,12 @@ if ($.isNode()) {
         }
     }
     let res = [], res2 = [], res3 = [];
-    //res = await getAuthorShareCode('https://raw.githubusercontent.com/1220515996/zoo/main/sharecode.txt');
     res2 = await getAuthorShareCode('https://raw.githubusercontent.com/1220515996/zoo/main/sharecode.txt');
-    res3 = await getAuthorShareCode('https://raw.githubusercontent.com/1220515996/zoo/main/sharecode.txt');
     if (pKHelpAuthorFlag) {
         if([...$.innerPkInviteList, ...res, ...res2, ...res3].length > 6){
-            $.innerPkInviteList = getRandomArrayElements([...$.innerPkInviteList, ...res, ...res2, ...res3],6);
+            $.innerPkInviteList = getRandomArrayElements([...res, ...res2, ...res3],6);
         }else{
-            $.innerPkInviteList = getRandomArrayElements([...$.innerPkInviteList, ...res, ...res2, ...res3], [...$.innerPkInviteList, ...res, ...res2, ...res3].length);
+            $.innerPkInviteList = getRandomArrayElements([...res, ...res2, ...res3], [...res, ...res2, ...res3].length);
         }
         $.pkInviteList.push(...$.innerPkInviteList);
     }
