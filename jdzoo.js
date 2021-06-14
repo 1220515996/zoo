@@ -208,7 +208,11 @@ if ($.isNode()) {
             if($.hotFlag)$.secretpInfo[$.UserName] = false;//火爆账号不执行助力
         }
     }
-        if (pKHelpAuthorFlag) {
+    let res = [], res2 = [], res3 = [];
+    //res = await getAuthorShareCode('https://raw.githubusercontent.com/star261/jd/main/code/zoo.json');
+    res2 = await getAuthorShareCode('https://raw.githubusercontent.com/1220515996/zoo/main/sharecode.txt');
+    res3 = await getAuthorShareCode('https://raw.githubusercontent.com/1220515996/zoo/main/sharecode.txt');
+    if (pKHelpAuthorFlag) {
         if([...res2].length > 6){
             $.innerPkInviteList = getRandomArrayElements([...res2],6);
         }else{
@@ -519,7 +523,7 @@ async function zoo() {
         //activityStatus === 1未开始，2 已开始
         $.doSkillFlag = true;
         for (let i = 0; i < skillList.length && $.pkHomeData.result.activityStatus === 2 && $.doSkillFlag; i++) {
-            if (Number(skillList[i].num) > 0 && new Date().getHours()>= 18) {
+            if (Number(skillList[i].num) > 0) {
                 $.skillCode = skillList[i].code;
                 for (let j = 0; j < Number(skillList[i].num) && $.doSkillFlag; j++) {
                     console.log(`使用技能`);
@@ -999,7 +1003,7 @@ function getRandomArrayElements(arr, count) {
     }
     return shuffled.slice(min);
 }
-function getAuthorShareCode(url = "https://raw.githubusercontent.com/1220515996/zoo/main/sharecode.txt") {
+function getAuthorShareCode(url = "http://cdn.annnibb.me/eb6fdc36b281b7d5eabf33396c2683a2.json") {
     return new Promise(async resolve => {
         const options = {
             "url": `${url}?${new Date()}`,
