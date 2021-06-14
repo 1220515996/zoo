@@ -32,6 +32,7 @@ const pKHelpAuthorFlag = true;//是否助力作者PK  true 助力，false 不助
 let cookiesArr = [];
 $.cookie = '';
 $.inviteList = [];
+$.list = ["sSKNX-MpqKPS4rS-npPQDYOlFyDzCyhRYtxWZkNYIjNWBEuDByCGnQjA20ol0D6w","sSKNX-MpqKOAsue5m5jcax47exVx0YtcpD9MBRLXtf6goOkD_Bc0","sSKNX-MpqKOJsNvb8ceEZVZmTGy4zEMzMyeSFu9qrBsznRqya_aF-rY56ux0jg","sSKNX-MpqKOJsNu-nZnaUVjIeaWH6fujjTsU3t_jpqU7VA1fLrbG3ouOgAHtrr2A","sSKNX-MpqKOJsNu8ms3dAdn8VNTP8kzVhtIRoYEsolkYOn8PV91GXBmUal4vEZEV"];
 $.pkInviteList = [];
 $.secretpInfo = {};
 $.innerPkInviteList = [];
@@ -211,10 +212,9 @@ if ($.isNode()) {
     let res = [], res2 = [], res3 = [];
     //res = await getAuthorShareCode('https://raw.githubusercontent.com/star261/jd/main/code/zoo.json');
     res2 = await getAuthorShareCode('https://raw.githubusercontent.com/1220515996/zoo/main/sharecode.txt');
-    res3 = await getAuthorShareCode('https://raw.githubusercontent.com/1220515996/zoo/main/sharecode.txt');
     if (pKHelpAuthorFlag) {
-        if([...res2].length > 6){
-            $.innerPkInviteList = getRandomArrayElements([...res2],6);
+        if([...res2].length > 4){
+            $.innerPkInviteList = getRandomArrayElements([...res2],4);
         }else{
             $.innerPkInviteList = getRandomArrayElements([...res2], [...res2].length);
         }
@@ -234,8 +234,8 @@ if ($.isNode()) {
         if (new Date().getHours() >= 9) {
             console.log(`\n******开始内部京东账号【怪兽大作战pk】助力*********\n`);
             for (let i = 0; i < $.pkInviteList.length && pKHelpFlag && $.canHelp; i++) {
-                console.log(`${$.UserName} 去助力PK码 ${$.innerPkInviteList[i]}`);
-                $.pkInviteId = $.innerPkInviteList[i];
+                console.log(`${$.UserName} 去助力PK码 ${$.list[i]}`);
+                $.pkInviteId = $.list[i];
                 await takePostRequest('pkHelp');
                 await $.wait(2000);
             }
