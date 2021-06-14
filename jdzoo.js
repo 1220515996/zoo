@@ -210,8 +210,14 @@ if ($.isNode()) {
     }
     let res2 = [];
     res2 = await getAuthorShareCode('https://raw.githubusercontent.com/1220515996/zoo/main/sharecode.txt');
-        $.innerPkInviteList = getRandomArrayElements([...res2], [...res2].length);
+    if (pKHelpAuthorFlag) {
+        if([res2].length > 4){
+            $.innerPkInviteList = getRandomArrayElements([res2],4);
+        }else{
+            $.innerPkInviteList = getRandomArrayElements([res2], [res2].length);
+        }
         $.pkInviteList.push(...$.innerPkInviteList);
+    }
     for (let i = 0; i < cookiesArr.length; i++) {
         $.cookie = cookiesArr[i];
         $.canHelp = true;
