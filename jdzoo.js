@@ -523,7 +523,7 @@ async function zoo() {
         //activityStatus === 1未开始，2 已开始
         $.doSkillFlag = true;
         for (let i = 0; i < skillList.length && $.pkHomeData.result.activityStatus === 2 && $.doSkillFlag; i++) {
-            if (Number(skillList[i].num) > 0) {
+            if (Number(skillList[i].num) > 0 && new Date().getHours()>= 18) {
                 $.skillCode = skillList[i].code;
                 for (let j = 0; j < Number(skillList[i].num) && $.doSkillFlag; j++) {
                     console.log(`使用技能`);
