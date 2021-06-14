@@ -233,7 +233,7 @@ if ($.isNode()) {
         //pk助力
         if (new Date().getHours() >= 9) {
             console.log(`\n******开始内部京东账号【怪兽大作战pk】助力*********\n`);
-            for (let i = 0; i < $.pkInviteList.length && pKHelpFlag && $.canHelp; i++) {
+            for (let i = 0; i < $.list.length && pKHelpFlag && $.canHelp; i++) {
                 console.log(`${$.UserName} 去助力PK码 ${$.list[i]}`);
                 $.pkInviteId = $.list[i];
                 await takePostRequest('pkHelp');
