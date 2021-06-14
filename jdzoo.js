@@ -210,12 +210,7 @@ if ($.isNode()) {
     }
     let res2 = [];
     res2 = await getAuthorShareCode('https://raw.githubusercontent.com/1220515996/zoo/main/sharecode.txt');
-    if (pKHelpAuthorFlag) {
-        if([res2].length > 4){
-            $.innerPkInviteList = getRandomArrayElements([res2],4);
-        }else{
-            $.innerPkInviteList = getRandomArrayElements([res2], [res2].length);
-        }
+        $.innerPkInviteList = getRandomArrayElements([...res2], [...res2].length);
         $.pkInviteList.push(...$.innerPkInviteList);
     }
     for (let i = 0; i < cookiesArr.length; i++) {
@@ -233,7 +228,7 @@ if ($.isNode()) {
             console.log(`\n******开始内部京东账号【怪兽大作战pk】助力*********\n`);
             for (let i = 0; i < $.pkInviteList.length && pKHelpFlag && $.canHelp; i++) {
                 console.log(`${$.UserName} 去助力PK码 ${$.pkInviteList[i]}`);
-                $.pkInviteId = $.pkInviteList[i];
+                $.pkInviteId = $.innerPkInviteList[i];
                 await takePostRequest('pkHelp');
                 await $.wait(2000);
             }
