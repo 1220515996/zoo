@@ -233,27 +233,14 @@ if ($.isNode()) {
         //pk助力
         if (new Date().getHours() >= 9) {
             console.log(`\n******开始内部京东账号【怪兽大作战pk】助力*********\n`);
-            for (let i = 0; i < $.pkInviteList.length && pKHelpFlag && $.canHelp; i++) {
+            for (let i = 0; i < $.
+                 .length && pKHelpFlag && $.canHelp; i++) {
                 console.log(`${$.UserName} 去助力PK码 ${$.pkInviteList[i]}`);
                 $.pkInviteId = $.pkInviteList[i];
                 await takePostRequest('pkHelp');
                 await $.wait(2000);
             }
-            $.canHelp = true;
-        }
-        if ($.pkInviteList && $.pkInviteList.length) console.log(`\n******开始内部京东账号【邀请好友助力】*********\n`);
-        for (let j = 0; j < $.pkInviteList.length && $.canHelp; j++) {
-            $.oneInviteInfo = $.pkInviteList[j];
-            if ($.oneInviteInfo.ues === $.UserName || $.oneInviteInfo.max) {
-                continue;
-            }
-            //console.log($.oneInviteInfo);
-            $.inviteId = $.oneInviteInfo.inviteId;
-            console.log(`${$.UserName}去助力${$.oneInviteInfo.ues},助力码${$.inviteId}`);
-            //await takePostRequest('helpHomeData');
-            await takePostRequest('help');
-            await $.wait(2000);
-        }
+
     }
 })()
     .catch((e) => {
@@ -721,7 +708,7 @@ async function dealReturn(type, data) {
             if (data.code === 0) {
                 console.log(`互助码：${data.data.result.inviteId || '助力已满，获取助力码失败'}`);
                 if (data.data.result.inviteId) {
-                    $..inviteListpush({
+                    $.inviteList.push({
                         'ues': $.UserName,
                         'secretp': $.secretp,
                         'inviteId': data.data.result.inviteId,
