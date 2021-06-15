@@ -237,7 +237,7 @@ function zoo_pk_doPkSkill(skillType, timeout = 0){
         try {
           //console.log('zoo_pk_doPkSkill:' + data)
           data = JSON.parse(data);
-          if (data.data.bizCode === 0 && new Date().getHours()>= 18) {
+          if (data.data.bizCode === 0) {
             console.log('技能获得：' + data.data.result.skillValue);
           } else {
             console.log('技能释放失败：' + data.data.bizMsg);
@@ -787,7 +787,7 @@ function zoo_pk_getHomeData(inviteId = "",timeout = 0) {
               return;
             let list = data.data.result.groupInfo.skillList;
             for (let i = list.length -1; i>=0; i--) {
-              if (parseInt(list[i].num) > 0) {
+              if (parseInt(list[i].num) > 0  && new Date().getHours()>= 18) {
                 await zoo_pk_doPkSkill(list[i].code,800);
                 await zoo_pk_getHomeData();
                 break;
