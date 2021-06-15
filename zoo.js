@@ -1,6 +1,6 @@
 /*
 动物联萌 618活动
-更新时间：2021-06-13 03:23
+更新时间：2021-06-15 09:44
 做任务，收金币
 脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
 // quantumultx
@@ -104,7 +104,7 @@ function zoo_getTaskDetail(shopSign = "",appSign = "",timeout = 0){
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
+          'User-Agent' : `jdapp;iPhone;9.2.0;14.1;`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
         },
@@ -227,7 +227,7 @@ function zoo_pk_doPkSkill(skillType, timeout = 0){
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
+          'User-Agent' : `jdapp;iPhone;9.2.0;14.1;`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
         },
@@ -237,7 +237,7 @@ function zoo_pk_doPkSkill(skillType, timeout = 0){
         try {
           //console.log('zoo_pk_doPkSkill:' + data)
           data = JSON.parse(data);
-          if (data.data.bizCode === 0) {
+          if (data.data.bizCode === 0 && new Date().getHours()>= 18) {
             console.log('技能获得：' + data.data.result.skillValue);
           } else {
             console.log('技能释放失败：' + data.data.bizMsg);
@@ -263,7 +263,7 @@ function zoo_sign(timeout = 0){
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
+          'User-Agent' : `jdapp;iPhone;9.2.0;14.1;`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
         },
@@ -380,7 +380,7 @@ function zoo_collectProduceScore(timeout = 0){
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
+          'User-Agent' : `jdapp;iPhone;9.2.0;14.1;`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`,
           'Content-Type' : `application/x-www-form-urlencoded`
@@ -420,7 +420,7 @@ function zoo_collectScore(taskBody,timeout = 0){
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
+          'User-Agent' : `jdapp;iPhone;9.2.0;14.1;`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
         },
@@ -437,8 +437,8 @@ function zoo_collectScore(taskBody,timeout = 0){
             //console.log('\n提示火爆，休息5秒')
             //await $.wait(5000)
             //await zoo_collectScore(taskBody)
-            console.log('此账号暂不可使用脚本，脚本终止！')
-            merge.black = true;
+            //console.log('此账号暂不可使用脚本，脚本终止！')
+            //merge.black = true;
             return ;
           }
           if (data.data.bizCode === 0 && typeof data.data.result.taskToken !== "undefined") {
@@ -469,7 +469,7 @@ function zoo_doAdditionalTask(taskBody,timeout = 0){
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
+          'User-Agent' : `jdapp;iPhone;9.2.0;14.1;`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
         },
@@ -509,7 +509,7 @@ function zoo_getFeedDetail(taskId,timeout = 0){
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
+          'User-Agent' : `jdapp;iPhone;9.2.0;14.1;`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
         },
@@ -558,7 +558,7 @@ function qryViewkitCallbackResult(taskBody,timeout = 0) {
           'Connection' : `keep-alive`,
           'Accept' : `*/*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
+          'User-Agent' : `jdapp;iPhone;9.2.0;14.1;`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`,
           'Content-Type' : 'application/x-www-form-urlencoded',
@@ -594,7 +594,7 @@ function zoo_pk_assistGroup(inviteId = "",timeout = 0) {
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
+          'User-Agent' : `jdapp;iPhone;9.2.6;14.1;`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`,
           'Refer' : `https://bunearth.m.jd.com/babelDiy/Zeus/4SJUHwGdUQYgg94PFzjZZbGZRjDd/index.html?jmddToSmartEntry=login`
@@ -628,7 +628,7 @@ function zoo_getHomeData(inviteId= "",timeout = 0) {
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
+          'User-Agent' : `jdapp;iPhone;9.2.0;14.1;`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
         },
@@ -649,11 +649,16 @@ function zoo_getHomeData(inviteId= "",timeout = 0) {
             secretp = data.data.result.homeMainInfo.secretp
             await zoo_collectProduceScore();
             if (merge.black) return;
-            await zoo_pk_getHomeData('sSKNX-MpqKOJsNu_mZneBluwe_DRzs1f90l6Q_p8OVxtoB-JJEErrVU4eHW7e2I')
+            let date = new Date($.time("yyyy/MM/dd HH:mm:ss"));
+            if (date.getHours() >= 9 && date.getHours() < 23) {
+              await zoo_pk_getHomeData('sSKNX-MpqKOJsNu_mZneBluwe_DRzs1f90l6Q_p8OVxtoB-JJEErrVU4eHW7e2')
+            }
             //await zoo_pk_assistGroup()
             //if (data.data.result.homeMainInfo.raiseInfo.buttonStatus === 1 )
             if (parseInt(data.data.result.homeMainInfo.raiseInfo.totalScore) >= parseInt(data.data.result.homeMainInfo.raiseInfo.nextLevelScore) ) await zoo_raise(1000)
-            await zoo_getHomeData('ZXTKT0205KkcI3ZFqDWVWmuS97ZdFjRWn6-7zx55awQ');//ZXTKT0225KkcRBka_FPTJBjzkv9YfAFjRWn6-7zx55awQ
+            if (date.getHours() >= 0 && date.getHours() < 1) {
+              await zoo_getHomeData('ZXTKT0225KkcRx4b8lbWJU72wvZZcwFjRWn6-7zx55awQ');//ZXTKT0225KkcRBka_FPTJBjzkv9YfAFjRWn6-7zx55awQ
+            }
             await zoo_getTaskDetail()
             await zoo_getTaskDetail("","app")
           } else {
@@ -680,7 +685,7 @@ function zoo_raise(timeout = 0) {
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
+          'User-Agent' : `jdapp;iPhone;9.2.0;14.1;`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
         },
@@ -749,7 +754,7 @@ function zoo_pk_getHomeData(inviteId = "",timeout = 0) {
           'Connection' : `keep-alive`,
           'Accept' : `application/json, text/plain, */*`,
           'Host' : `api.m.jd.com`,
-          'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88`,
+          'User-Agent' : `jdapp;iPhone;9.2.0;14.1;`,
           'Accept-Encoding' : `gzip, deflate, br`,
           'Accept-Language' : `zh-cn`
         },
@@ -782,7 +787,7 @@ function zoo_pk_getHomeData(inviteId = "",timeout = 0) {
               return;
             let list = data.data.result.groupInfo.skillList;
             for (let i = list.length -1; i>=0; i--) {
-              if (parseInt(list[i].num) > 0 && new Date().getHours()>= 18) {
+              if (parseInt(list[i].num) > 0) {
                 await zoo_pk_doPkSkill(list[i].code,800);
                 await zoo_pk_getHomeData();
                 break;
