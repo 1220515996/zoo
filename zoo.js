@@ -1,6 +1,6 @@
 /*
 动物联萌 618活动
-更新时间：2021-06-15 09:44
+更新时间：2021-06-16 08:31
 做任务，收金币
 脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
 // quantumultx
@@ -655,7 +655,7 @@ function zoo_getHomeData(inviteId= "",timeout = 0) {
             if (merge.black) return;
             let date = new Date($.time("yyyy/MM/dd HH:mm:ss"));
             if (date.getHours() >= 9 && date.getHours() < 23) {
-              await zoo_pk_getHomeData('sSKNX-MpqKOJsNu_mZneBluwe_DRzs1f90l6Q_p8OVxtoB-JJEErrVU4eHW7e2')
+              await zoo_pk_getHomeData('sSKNX-MpqKOJsNu_mZneBluwe_DRzs1f90l6Q_p8OVxtoB-JJEErrVU4eHW7e2I')
             }
             //await zoo_pk_assistGroup()
             //if (data.data.result.homeMainInfo.raiseInfo.buttonStatus === 1 )
@@ -791,7 +791,7 @@ function zoo_pk_getHomeData(inviteId = "",timeout = 0) {
               return;
             let list = data.data.result.groupInfo.skillList;
             for (let i = list.length -1; i>=0; i--) {
-              if (parseInt(list[i].num) > 0  && new Date().getHours()>= 18) {
+              if (parseInt(list[i].num) > 0 && new Date().getHours()>= 18) {
                 await zoo_pk_doPkSkill(list[i].code,800);
                 await zoo_pk_getHomeData();
                 break;
