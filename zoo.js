@@ -651,7 +651,7 @@ function zoo_getHomeData(inviteId= "",timeout = 0) {
               await zoo_collectScore(taskBody, 1000)
               return
             }
-            //console.log('zoo_getHomeData:' + JSON.stringify(data))
+            console.log('zoo_getHomeData:' + JSON.stringify(data))
             secretp = data.data.result.homeMainInfo.secretp
             await zoo_collectProduceScore();
             if (merge.black) return;
