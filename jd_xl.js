@@ -8,7 +8,7 @@ cron 12 7,22 * * *
 const $ = new Env("骁龙品牌日");
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
-const helpAuthor = true;//是否帮助作者
+const helpAuthor = false;//是否帮助作者
 let cookiesArr = [], cookie = '', message = '';
 let ownCode = {};
 if ($.isNode()) {
