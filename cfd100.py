@@ -50,12 +50,12 @@ def ping_time():
 
 def get_url():
     url = "https://m.jingxi.com/jxbfd/user/ExchangePrize?strZone=jxbfd&bizCode=jxbfd&source=jxbfd&dwEnv=7&_cfd_t" \
-          "={}8&ptag=7155.9.47&dwType=3&dwLvl=3&ddwPaperMoney=100000&strPoolName=jxcfd2_exchange_hb_202110" \
-          "&strPgtimestamp={}&strPhoneID=3f092daf5202a681&strPgUUNum=d18883c067ad1fd1299545f0b0786143&_stk" \
+          "={}8&ptag=7155.9.47&dwType=3&dwLvl=2&ddwPaperMoney=111000&strPoolName=jxcfd2_exchange_hb_202111" \
+          "&strPgtimestamp={}&strPhoneID=237a61a8fba636db&strPgUUNum=5fbb12db2e9cb4ecdd83b8ee0ea85e1b&_stk" \
           "=_cfd_t%2CbizCode%2CddwPaperMoney%2CdwEnv%2CdwLvl%2CdwType%2Cptag%2Csource%2CstrPgUUNum%2CstrPgtimestamp" \
-          "%2CstrPhoneID%2CstrPoolName%2CstrZone&_ste=1&h5st=20210929220011248%3B9225930342578161%3B10032" \
-          "%3Btk01w9b641bbb30nTfJ9PqOZbo7j2qUoj77OqQf4JbpxQFpJGNX0TUHzeZJs0tTkF697FsOBgFlP9%2Fm%2FPMVZwV5pOxwC" \
-          "%3Bb1759a02c174496e076cb0ccfad0ce0a0c5c9aeb22054de4f8c7116fd6a38f05&_=1632924011249&sceneval=2" \
+          "%2CstrPhoneID%2CstrPoolName%2CstrZone&_ste=1&h5st=20211104100009798%3B8890088326893162%3B10032" \
+          "%3Btk01w8dd91b8d30n8fQQV1cejXxP%2FVUMeQChC%2FYXDUESSza51j7w1cLxzBSWgtgKCJsfJEAdu%2F3iyA5fPzdVIRHX91lT" \
+          "%3B25910d6b0612a826ad2eb4f88b56266906551f8d99d2aa24d2afcd54fa29f2a7&_=1635991209799&sceneval=2" \
           "&g_login_type=1&callback=jsonpCBKUUU&g_ty=ls".format(int(time.time() * 1000) - 2, int(time.time() * 1000))
     return url
 
