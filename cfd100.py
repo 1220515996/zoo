@@ -20,11 +20,11 @@ except ImportError:
 # 这里填cookie
 cookie = "pt_pin=18740209378_p; pt_key=AAJhe6fsADAcU6BV5MMo_HY6DLhqyV04yqsZL-iXGneiLJxTPyXct_kqButvdjYwvwykMpmXj7M;"
 # 这里输入发送时间间隔 单位：s(秒)
-nterval_time = 0.5
+nterval_time = 0.7
 # 服务器性能延迟设置（根据服务器性能，执行程序需要一点时间）,单位 s (秒)
 time2 = 0.001
 # 这里是发送次数
-num = 5
+num = 3
 # 线程数，默认1线程
 thread_num = 1
 
