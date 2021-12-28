@@ -9,7 +9,7 @@
 
 const $ = new Env('中国电信')
 const notify = $.isNode() ? require('./sendNotify') : '';
-const phonedat = '15300001530,18088881455,15377778969'
+const phonedat = '13341297664,18088881455,15377778969'
 !(async () => {
   $.CryptoJS = $.isNode() ? require('crypto-js') : CryptoJS
   await signapp()
