@@ -1,40 +1,50 @@
 {
   "log": {
-      "loglevel": "warning"
-    },
-"inbounds": [
+    "access": "",
+    "error": "",
+    "loglevel": "warning"
+  },
+  "inbounds": [
     {
-      "port": 443, 
-      "protocol": "vmess",    
+      "port": 443,
+      "protocol": "vmess",
       "settings": {
+        "udp": true,
         "clients": [
           {
-            "id": "23ad6b10-8d1a-40f7-8ad0-e3e35cd38297",  
-            "alterId": 0
+            "id": "586330e3-c11a-43dd-a860-cfd82ad2741d",
+            "alterId": 0,
+            "email": "t@t.tt"
           }
-        ]
+        ],
+        "allowTransparent": false
       },
       "streamSettings": {
         "network": "ws",
-      "wsSettings": {
-        "path": "/"
-      }
-        "security": "tls", 
+        "security": "tls",
         "tlsSettings": {
-          "certificates": [
-            {
-              "certificateFile": "/root/cert/cert.crt", 
-              "keyFile": "/root/cert/private.key" 
-            }
-          ]
+          "allowInsecure": true,
+          "serverName": "one.ztnb.free.hr",
+          "fingerprint": ""
+        },
+        "wsSettings": {
+          "path": "/"
         }
       }
     }
   ],
   "outbounds": [
     {
-      "protocol": "freedom",
+      "protocol": "freedom"
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
       "settings": {}
     }
-  ]
+  ],
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": []
+  }
 }
