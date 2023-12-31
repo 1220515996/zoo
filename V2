@@ -1,46 +1,37 @@
 {
   "log": {
-    "access": "",
-    "error": "",
-    "loglevel": "warning"
-  },
-  "inbounds": [
+      "loglevel": "warning"
+    },
+"inbounds": [
     {
-      "port": 443,
-      "protocol": "vless",
+      "port": 443, 
+      "protocol": "vmess",    
       "settings": {
-        "udp": false,
         "clients": [
           {
-            "id": "ede1a1f7-8f28-4d3c-b36f-d48183bcdb30",
-            "alterId": 0,
-            "email": "t@t.tt",
-            "flow": ""
+            "id": "23ad6b10-8d1a-40f7-8ad0-e3e35cd38297",  
+            "alterId": 0
           }
-        ],
-        "decryption": "none",
-        "allowTransparent": false
+        ]
       },
       "streamSettings": {
         "network": "ws",
-        "wsSettings": {
-          "headers": {}
+        "security": "tls", 
+        "tlsSettings": {
+          "certificates": [
+            {
+              "certificateFile": "/root/cert/cert.crt", 
+              "keyFile": "/root/cert/private.key" 
+            }
+          ]
         }
       }
     }
   ],
   "outbounds": [
     {
-      "protocol": "freedom"
-    },
-    {
-      "tag": "block",
-      "protocol": "blackhole",
+      "protocol": "freedom",
       "settings": {}
     }
-  ],
-  "routing": {
-    "domainStrategy": "IPIfNonMatch",
-    "rules": []
-  }
+  ]
 }
