@@ -275,7 +275,7 @@ update_with_watchtower(){
 
 #更新管理面板
 update_sh(){
-    curl -o palinstall.sh https://raw.githubusercontent.com/1220515996/zoo/main/install.sh && chmod +x palinstall.sh && bash palinstall.sh
+    curl -o palinstall.sh https://gh.idayer.com/https://raw.githubusercontent.com/1220515996/zoo/main/install.sh && chmod +x palinstall.sh && bash palinstall.sh
 }
 
 #开始菜单
