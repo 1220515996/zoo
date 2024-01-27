@@ -43,7 +43,7 @@ install_pal_server(){
         echo -e "${Red}幻兽帕鲁服务端已存在，安装失败！${Font}"
     else
         echo -e "${Green}开始安装幻兽帕鲁服务端...${Font}"
-        docker run -dit --name steamcmd --net host kagurazakanyaa/palworld:0.1.2.0
+        docker run -dit --name steamcmd --net host miaowmint/palworld:0.1.2.0
         echo -e "${Green}幻兽帕鲁服务端已成功安装并启动！${Font}"
     fi
 }
