@@ -201,7 +201,7 @@ import_pal_server(){
 #导出幻兽帕鲁存档及配置
 export_pal_server(){
     if [ $(docker ps -a -q -f name=steamcmd) ]; then
-        echo -e "${Green}此操作会导出容器内 /home/steam/Steam/steamapps/common/PalServer/Pal/Saved 文件夹下所有的文件${Font}"
+        echo -e "${Green}此操作会导出容器内 /opt/palworld/Pal/Saved 文件夹下所有的文件${Font}"
         echo -e "${Green}导出的幻兽帕鲁存档及配置将会存放在 /data/palworld 目录下！${Font}"
         echo -e "${Green}开始导出幻兽帕鲁存档及配置...${Font}"
         mkdir -p /data/palworld
